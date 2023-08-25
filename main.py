@@ -7,9 +7,7 @@ import random
 import tkinter as tk
 import tkinter.messagebox
 
-
-#### 利用python第三方库pyttsx3来将文字用语音发送出来
-def voice(a):
+def voice(a): #语音读取被抽到的学生的姓名
     ## pytttsx初始化
     engine = pyttsx3.init()
     ## a代表着需要转成音频的文字
@@ -25,8 +23,7 @@ m.title("点兵点将 v1.0 ")
 m.geometry("500x300")
 
 # 创建抽取到的同学姓名展示部分
-labelx=tk.Label(m,text="紫薇",fg="red",font=("宋体",80),width=9,height=2)
-labelx.grid(row=0)
+labelx=tk.Label(m,text="紫薇",fg="red",font=("宋体",80),width=9,height=2).grid(row=0)
 
 name_data = [] # 创建存储所有学生姓名的列表
 
@@ -44,8 +41,8 @@ def execl(filename, sheetname):
 execl("config\\name.xlsx","Sheet1")  # 调用一下execl函数，在没有开始点名之前先将姓名添加到name_data列表之中
 
 
-def ceshi():
-    while 2>1:
+def callname():
+    while ture:
         a = random.randint(0,len(name_data)-1)## 产生随机数，作为list的下标index
 
         b = "下面请"+name_data[a]+"同学来回答问题"## 拼接成字符串
@@ -61,13 +58,13 @@ def ceshi():
 
         ed_name.append(name_data[a])    # 将被抽点到的学生添加到ed_name例表中，标记已经被抽点
 
-        labelx = tk.Label(m, text=name_data[a], fg="red", font=("宋体", 80), width=9, height=2,labelx.grid(row=0))
+        labelx = tk.Label(m,text=name_data[a],fg="red",font=("微软雅黑", 80),width=9,height=2).grid(row=0) #展示被抽取到的学生的姓名
 
         voice(b) ## 语音读取
 
         break
 
-tk.Button(m, text="开始点名", width=15, command=ceshi).grid(row=1,padx=10, pady=10,sticky='s')  # s南边也就是下边
+tk.Button(m,text="开始点名",width=15,command=callname).grid(row=1,padx=10,pady=10,sticky='s')  # s南边也就是下边
 
 
 m.mainloop()  # 进入消息循环
