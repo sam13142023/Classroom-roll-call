@@ -53,7 +53,7 @@ def callname():
             break
 
         ## 判断被抽点到的同学是不是已经被抽点过，如果被抽点过，则跳过该同学
-        if name_data[a] in ed_name
+        if name_data[a] in ed_name:
             continue
 
         ed_name.append(name_data[a])    # 将被抽点到的学生添加到ed_name例表中，标记已经被抽点
