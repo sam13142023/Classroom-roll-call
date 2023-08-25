@@ -20,12 +20,12 @@ def voice(a):
 ### 创建一个list来保存已经被抽到名字的同学
 ed_name= []
 
-root = tk.Tk()  # 创建窗口对象
-root.title("点兵点将 v1.0 ")
-root.geometry("500x300")
+m = tk.Tk()  # 创建窗口对象
+m.title("点兵点将 v1.0 ")
+m.geometry("500x300")
 
 # 创建抽取到的同学姓名展示部分
-labelx=tk.Label(root,text="紫薇",fg="red",font=("宋体",80),width=9,height=2)
+labelx=tk.Label(m,text="紫薇",fg="red",font=("宋体",80),width=9,height=2)
 labelx.grid(row=0)
 
 name_data = [] # 创建存储所有学生姓名的列表
@@ -52,24 +52,23 @@ def ceshi():
 
         ## 判断ed_name元素个数是不是与name_data列表中相同，如果相同，那么代表着所有的同学名字都被抽点过了
         if len(ed_name) == len(name_data):
-            tk.messagebox.askokcancel("提示", '所有的学生都已经抽取了一遍，如需要继续，请关闭该程序重新打开')
+            tk.messagebox.askokcancel("提示", '所有的学生都已经抽取了一遍，请重启程序以重新开始抽取')
             break
 
         ## 判断被抽点到的同学是不是已经被抽点过，如果被抽点过，则跳过该同学
-        if name_data[a] in ed_name:
+        if name_data[a] in ed_name
             continue
 
         ed_name.append(name_data[a])    # 将被抽点到的学生添加到ed_name例表中，标记已经被抽点
 
-        labelx = tk.Label(root, text=name_data[a], fg="red", font=("宋体", 80), width=9, height=2)# 在姓名框里面展示姓名
-        labelx.grid(row=0)
+        labelx = tk.Label(m, text=name_data[a], fg="red", font=("宋体", 80), width=9, height=2,labelx.grid(row=0))
 
         voice(b) ## 语音读取
 
         break
 
-tk.Button(root, text="开始点名", width=15, command=ceshi).grid(row=1,padx=10, pady=10,sticky='s')  # s南边也就是下边
+tk.Button(m, text="开始点名", width=15, command=ceshi).grid(row=1,padx=10, pady=10,sticky='s')  # s南边也就是下边
 
 
-root.mainloop()  # 进入消息循环
+m.mainloop()  # 进入消息循环
 
