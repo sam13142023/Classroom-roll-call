@@ -1,12 +1,18 @@
 #!/usr/bin/env python
 # coding:utf-8
 
+#!/usr/bin/env python
+# coding:utf-8
+
 import pyttsx3
 import openpyxl
 import random
 import tkinter as tk
 import tkinter.messagebox
+import os
 
+path = os.getcwd()
+print(path)
 def voice(a): #语音读取被抽到的学生的姓名
     ## pytttsx初始化
     engine = pyttsx3.init()
@@ -20,10 +26,10 @@ ed_name= []
 
 m = tk.Tk()  # 创建窗口对象
 m.title("点兵点将 v1.0 ")
-m.geometry("500x300")
+m.geometry("600x400")
 
 # 创建抽取到的同学姓名展示部分
-labelx=tk.Label(m,text="紫薇",fg="red",font=("宋体",80),width=9,height=2).grid(row=0)
+labelx=tk.Label(m,text="点击下方",fg="red",font=("宋体",80),width=9,height=2).grid(row=0)
 
 name_data = [] # 创建存储所有学生姓名的列表
 
@@ -37,12 +43,11 @@ def execl(filename, sheetname):
             continue
         name_data.append(sheet.cell(row, column).value)  # 将第一列的每一行数值遍历添加到name_data列表中；
     return name_data
-
-execl("config\\name.xlsx","Sheet1")  # 调用一下execl函数，在没有开始点名之前先将姓名添加到name_data列表之中
+execl(r"name\name.xlsx","Sheet1")  # 调用一下execl函数，在没有开始点名之前先将姓名添加到name_data列表之中
 
 
 def callname():
-    while ture:
+    while 1:
         a = random.randint(0,len(name_data)-1)## 产生随机数，作为list的下标index
 
         b = "下面请"+name_data[a]+"同学来回答问题"## 拼接成字符串
